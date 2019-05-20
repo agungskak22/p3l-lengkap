@@ -82,6 +82,7 @@
                   disabled
                   flat
                   color="warning"
+                  :href="`localhost:8080/procurementPdf/${props.item.id_procurement}`"
                    @click="printHandler(props.item,props.item.id_procurement)"
                 >
                 Cetak
@@ -90,6 +91,7 @@
                   v-else
                   flat
                   color="warning"
+                  :href="`localhost:8000/procurementPdf/${props.item.id_procurement}`"
                    @click="printHandler(props.item,props.item.id_procurement)"
                 >
                 Cetak

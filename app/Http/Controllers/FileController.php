@@ -7,7 +7,6 @@ use App\Transaction;
 use App\Sparepart_type;
 use App\Procurement;
 use Carbon\Carbon;
-// require '/path/to/your/vendor/autoload.php';
 use CpChart\Chart\Pie;
 use CpChart\Data;
 use CpChart\Image;

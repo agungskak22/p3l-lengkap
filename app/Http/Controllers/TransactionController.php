@@ -30,6 +30,7 @@ class TransactionController extends RestController
         $response = $this->generateCollection($transactions);
         return $this->sendResponse($response);
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -117,15 +118,9 @@ class TransactionController extends RestController
                     if($data->stock<$data->min_stock)
                     {
                         $token=['cBy9I4NDXro:APA91bF0sDMutZo5aQo4VY9hMfmoOvY3mUjSXWwdZaGsKNVRgOtWRgVyBGX-SIAWRdbFLnURZQ-boB9_p3MaN03DUxKyyN-helrFnDgig_UdH2ffIGWCNSTsvdQ_FAbu42B-iPbzkvaK','fzQS5wVJYt4:APA91bG8Ldrp_8ksxZyC446z1TkPkux5_a8bpRkAwIDhEh7exYw6n4WoYUesq9EAKoUWG6FS5xHp1DxoVBU2andL1elkCqB4IpmTLIAYGVkOUEAMAGOR1XJ9DH6HoR6-A72K3O0rFLrd','cpb9nmgdPwg:APA91bFB2HkGGRhaPmzhkrAq7g2TjFsrYvTJ_S6DrjVhLGWaG7sy2S8nqIMi5JfAkX96Er-WvXdMbhrycSbRY4L49P_BUDW32nrzDJinUMW-UgfZqTEi8OfeQOnUBqv869Hdf_Yw-ybd','evv7Xzo4w_Y:APA91bEz8LNHRLzG4hqOY5ExDoF_50uy9dQdnCpt3bCGf-LezeUgGtzLXzLCx2wrTSfuRV6hSKr7tDEz8pYg0uZwHSG6JLWPrkzkKBWbSxsLAkT6Kp4R-1fRsRAyXkgYg6q81LwhPgxa'];
-                        // $notification = [
-                        //     'body' => 'this is test',
-                        //     'sound' => true,
-                        // ];
-                        
                         $data = array('title' => $data->sparepart_name ,'body' => 'kurang dari jumlah stock minimal');
                         $fcmNotification = [
                             'registration_ids' => $token, 
-                            // 'to'        => $token, //single token
                             'priority' => "high",
                             'notification' => $data,
                         ];
@@ -220,14 +215,6 @@ class TransactionController extends RestController
                     array_push($search,$detail);
                 }
             }
-            // $details=Detail_sparepart::where("id_motorcycle",$motorcycle->id_motorcycle)->get();
-            // foreach($details as $detail)
-            // {
-            //     if($detail->transactions->customers->customer_phone_number==$request->phone_number)
-            //     {
-            //         array_push($search,$detail);
-            //     }
-            // }
             $response = $this->generateCollection($search,CheckStatusTransformer::class);
             return $this->sendResponse($response);
         } catch (ModelNotFoundException $e) {
@@ -251,18 +238,6 @@ class TransactionController extends RestController
     public function notification($token, $title)
     {
         $token=$token;
-        // $notification = [
-        //     'title' => $title,
-        //     'sound' => true,
-        // ];
-        
-        // $extraNotificationData = ["message" => $notification,"moredata" =>'dd'];
-        // $fcmNotification = [
-        //     //'registration_ids' => $tokenList, //multple token array
-        //     'to'        => $token, //single token
-        //     'notification' => $notification,
-        //     'data' => $extraNotificationData
-        // ];
         $res = array();
         $res['body'] = $title;
         $fields = array(
@@ -404,10 +379,6 @@ class TransactionController extends RestController
                     if($data->stock<$data->min_stock)
                     {
                         $token=['cBy9I4NDXro:APA91bF0sDMutZo5aQo4VY9hMfmoOvY3mUjSXWwdZaGsKNVRgOtWRgVyBGX-SIAWRdbFLnURZQ-boB9_p3MaN03DUxKyyN-helrFnDgig_UdH2ffIGWCNSTsvdQ_FAbu42B-iPbzkvaK','fzQS5wVJYt4:APA91bG8Ldrp_8ksxZyC446z1TkPkux5_a8bpRkAwIDhEh7exYw6n4WoYUesq9EAKoUWG6FS5xHp1DxoVBU2andL1elkCqB4IpmTLIAYGVkOUEAMAGOR1XJ9DH6HoR6-A72K3O0rFLrd','cpb9nmgdPwg:APA91bFB2HkGGRhaPmzhkrAq7g2TjFsrYvTJ_S6DrjVhLGWaG7sy2S8nqIMi5JfAkX96Er-WvXdMbhrycSbRY4L49P_BUDW32nrzDJinUMW-UgfZqTEi8OfeQOnUBqv869Hdf_Yw-ybd','evv7Xzo4w_Y:APA91bEz8LNHRLzG4hqOY5ExDoF_50uy9dQdnCpt3bCGf-LezeUgGtzLXzLCx2wrTSfuRV6hSKr7tDEz8pYg0uZwHSG6JLWPrkzkKBWbSxsLAkT6Kp4R-1fRsRAyXkgYg6q81LwhPgxa'];
-                        // $notification = [
-                        //     'body' => 'this is test',
-                        //     'sound' => true,
-                        // ];
                         
                         $data = array('title' => $data->sparepart_name ,'body' => 'kurang dari jumlah stock minimal');
                         $fcmNotification = [

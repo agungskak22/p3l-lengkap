@@ -17,7 +17,8 @@ class FileController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         try {
             $procurement = Procurement::find($id);
-            // echo $procurement->date;
+            $procurement->procurement_status="on Progress";
+            $procurement->save();
             $word = explode(' ',trim($procurement->date));
             $date = $word[0];
             $no = 1;
@@ -565,12 +566,9 @@ class FileController extends Controller
         $data = new Data();
         $data->addPoints($dataset, "ScoreA");
         $data->setSerieDescription("ScoreA", "Application A");
-        // Define the absissa serie
         $data->addPoints($label, "Labels");
         $data->setAbscissa("Labels");
-        // Create the image
         $image = new Image(700, 230, $data);
-        // Draw a solid background
         $backgroundSettings = [
             "R"     => 173,
             "G"     => 152,
@@ -601,17 +599,12 @@ class FileController extends Controller
             "EndB"   => 50,
             "Alpha"  => 100
         ]);
-        // Add a border to the picture
         $image->drawRectangle(0, 0, 699, 229, ["R" => 0, "G" => 0, "B" => 0]);
-        // Write the picture title
         $image->setFontProperties(["FontName" => "Silkscreen.ttf", "FontSize" => 6]);
         $image->drawText(10, 13, "pPie - Draw 2D pie charts", ["R" => 255, "G" => 255, "B" => 255]);
-        // Set the default font properties
         $image->setFontProperties(["FontName" => "Forgotte.ttf", "FontSize" => 10, "R" => 80, "G" => 80, "B" => 80]);
-        // Enable shadow computing
         $image->setShadow(true, ["X" => 2, "Y" => 2, "R" => 150, "G" => 150, "B" => 150, "Alpha" => 100]);
         $image->drawText(140, 200, "Single AA pass", ["R" => 0, "G" => 0, "B" => 0, "Align" => TEXT_ALIGN_TOPMIDDLE]);
-        // Create and draw the chart
         $pieChart = new Pie($image, $data);
         $pieChart->draw2DPie(140, 125, ["SecondPass" => false]);
         $pieChart->draw2DPie(340, 125, ["DrawLabels" => true, "Border" => true]);

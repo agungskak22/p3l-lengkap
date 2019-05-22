@@ -101,7 +101,7 @@
         </v-parallax>
       </section>
 
-      <section color="#FAFAFA">
+      <section color="white">
         <v-container>
           <p class="text-md-center display-2">Riwayat Transaksi Pelanggan</p>
           <VDataIterator
@@ -374,18 +374,8 @@ import Footer from "../../views/Home/footer";
       }),
 
       async submitHandler () {
-        
-        // const payload = {
-        //   motorcycle_type_name: value.motorcycle_type_name,
-        //   id_motorcycle_brand: value.id_motorcycle_brand
-        // }
-
         console.log(this.form)
         await this.searchDetail(this.form)
-      
-        // if (!this.transactionError) {
-
-        // }
       },
 
       async detailTransaction(id){
@@ -396,7 +386,6 @@ import Footer from "../../views/Home/footer";
           this.mechanics=[]
           this.totalService=0
           this.totalSparepart=0
-          console.log("cek")
           this.transaction=this.trans
           this.employees=this.trans.employee
           this.spareparts=this.trans.sparepart
@@ -421,7 +410,6 @@ import Footer from "../../views/Home/footer";
                   console.log(mechanic)
                   if(sparepart.mechanic_name!=mechanic)
                   {
-                      console.log("coba")
                       this.mechanics.push(sparepart.mechanic_name)
                   }
               });
@@ -437,11 +425,8 @@ import Footer from "../../views/Home/footer";
           else
           {
             this.mechanics.forEach(mechanic => {
-                console.log(mechanic)
-                console.log("cekcek")
                 if(service.mechanic_name!=mechanic)
                 {
-                    console.log("coba2")
                     this.mechanics.push(service.mechanic_name)
                 }
             });
@@ -451,11 +436,6 @@ import Footer from "../../views/Home/footer";
       this.dialog=true
       }
     },
-
-    // mounted () {
-    //   this.fetch()
-    // }
-
   }
 </script>
 

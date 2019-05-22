@@ -2591,10 +2591,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // const payload = {
-                //   motorcycle_type_name: value.motorcycle_type_name,
-                //   id_motorcycle_brand: value.id_motorcycle_brand
-                // }
                 console.log(this.form);
                 _context.next = 3;
                 return this.searchDetail(this.form);
@@ -2631,7 +2627,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 this.mechanics = [];
                 this.totalService = 0;
                 this.totalSparepart = 0;
-                console.log("cek");
                 this.transaction = this.trans;
                 this.employees = this.trans.employee;
                 this.spareparts = this.trans.sparepart;
@@ -2653,8 +2648,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       console.log(mechanic);
 
                       if (sparepart.mechanic_name != mechanic) {
-                        console.log("coba");
-
                         _this.mechanics.push(sparepart.mechanic_name);
                       }
                     });
@@ -2667,12 +2660,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     _this.mechanics.push(service.mechanic_name);
                   } else {
                     _this.mechanics.forEach(function (mechanic) {
-                      console.log(mechanic);
-                      console.log("cekcek");
-
                       if (service.mechanic_name != mechanic) {
-                        console.log("coba2");
-
                         _this.mechanics.push(service.mechanic_name);
                       }
                     });
@@ -2681,7 +2669,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 this.total = this.totalService + this.totalSparepart;
                 this.dialog = true;
 
-              case 17:
+              case 16:
               case "end":
                 return _context2.stop();
             }
@@ -2695,10 +2683,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return detailTransaction;
     }()
-  }) // mounted () {
-  //   this.fetch()
-  // }
-
+  })
 });
 
 /***/ }),
@@ -14297,7 +14282,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "section",
-            { attrs: { color: "#FAFAFA" } },
+            { attrs: { color: "white" } },
             [
               _c(
                 "v-container",

@@ -37,13 +37,17 @@ Route::resource('motorcycles','MotorcycleController');
 Route::get('usermotorcycles/{id}','MotorcycleController@showByUser');
 Route::resource('procurements','ProcurementController');
 Route::post('procurementDetails','ProcurementController@storeDetail');
+
 Route::put('procurementDetails/{id}','ProcurementController@updateDetail');
 Route::get('procurementDetails/{id}','ProcurementController@showdetail');
 Route::resource('transactions','TransactionController');
+
 Route::post('detailService','TransactionController@storeDetailService');
 Route::get('detailService/{id}','TransactionController@showDetailService');
+
 Route::post('detailSparepart','TransactionController@storeDetailSparepart');
 Route::get('detailSparepart/{id}','TransactionController@showDetailSparepart');
+
 Route::put('payment/{id}','TransactionController@payment');
 Route::post('searchDetail','TransactionController@searchDetailService');
 Route::get('/generate-procurement-docs/{id}', 'FileController@generateProcurementDocs');

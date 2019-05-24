@@ -1,33 +1,29 @@
 <template>
   <PageWrapper :breadcrumbs="breadcrumbs">
-    <card>
-      <v-container grid-list-md mb-0>
-        <h1 class="text-md-center">DATA SUPPLIER</h1>
-      </v-container> 
-      <v-layout row wrap>
-        <v-flex xs6>
-            <VBtn
-            depressed
-            dark
-            round
-            color = "indigo"
-            @click="dialog = true"
-            >
-            <VIcon>add</VIcon>
-                Tambah Supplier
-            </VBtn>
-        </v-flex>
-        <v-flex xs6 class="text-xs-right">
-            <VBtn
-            icon
-            @click="fetch()"
-            >
-                <VIcon>refresh</VIcon>
-            </VBtn>
-            <CardSearchBar v-model="keyword" />
-        </v-flex>
-       </v-layout>
-      <SupplierControl ref="supplierControl">
+<div id="pageTable">
+      <v-container grid-list-xl fluid>
+        <v-layout row wrap>
+        <v-flex lg12>
+          <v-card>
+            <v-toolbar card color="white">
+              <v-text-field flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="keyword"
+              hide-details
+              class="hidden-sm-and-down">
+              </v-text-field>
+              <v-btn icon @click="dialog = true">
+                <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn icon @click="fetch()">
+                <v-icon>refresh</v-icon>
+              </v-btn>
+            </v-toolbar>
+            <v-divider></v-divider>
+            <v-card-text class="pa-0">
+<SupplierControl ref="supplierControl">
         <template slot-scope="{ loading, error, items }">
           <VCardText
             v-if="loading || error"
@@ -192,7 +188,12 @@
           </VCardText>
         </UtilityCard>
       </v-dialog>
-    </card>
+      </v-card-text>
+          </v-card>
+        </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
   </PageWrapper>
 </template>
 

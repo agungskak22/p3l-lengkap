@@ -41,7 +41,15 @@ export default {
       throw new Error('Gagal mendapatkan data reports!')
     }
   },
-
+  async sparepartSelling(year,month) {
+    try {
+      const res = await http.get(`/api/sparepart-selling/${year}/${month}`)
+      
+      return res.data
+    } catch (err) {
+      throw new Error('Gagal mendapatkan data reports!')
+    }
+  },
   async remainingStock(year,sparepart) {
     try {
       const res = await http.get(`/api/remaining-stock/${year}/${sparepart}`)
@@ -85,7 +93,13 @@ export default {
       throw new Error('Gagal mendapatkan data reports!')
     }
   },
-
+  async printsparepartSelling (year,month) {
+    try {
+        await http.download(`/api/generate-sparepart-selling/${year}/${month}`)
+    } catch (err) {
+      throw new Error('Gagal mendapatkan data reports!')
+    }
+  },
   async printRemainingStock (year,sparepart) {
     try {
         await http.download(`/api/generate-remaining-stock/${year}/${sparepart}`)

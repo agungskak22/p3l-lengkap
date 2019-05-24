@@ -28,12 +28,12 @@
               <ErrorAlert ref="errorAlert" />
                 <v-form @submit.prevent="loginHandler()">
                   <v-text-field v-model="form.username" prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
-                  <v-text-field v-model="form.password" id="password" prepend-icon="lock" name="password" label="Password" type="password"></v-text-field>
+                  <v-text-field v-model="form.password" id="password" prepend-icon="lock" name="password" label="Password" type="password" @keyup.enter="loginHandler(); dialog =true"></v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn dark color="indigo" v-on:click='loginHandler()' @click="dialog=true" :disabled="dialog" :loading="dialog" type="submit">Login</v-btn>
+                <v-btn dark color="indigo" v-on:click='loginHandler()' @click="dialog=true" :disabled="dialog" :loading="dialog" load=true type="submit">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -101,10 +101,16 @@
         } catch (err) {
           this.$refs.errorAlert.trigger({ message: 'Password atau Username tidak valid' })
         }
-      }
-    },
+      },
+      loadUpdate(){
+          this.load = true
+      },
+      reset () {
+          this.$refs.form.reset()
+      },
     props: {
       source: String
     }
+  }
   }
 </script>

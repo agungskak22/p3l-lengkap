@@ -413,6 +413,33 @@ class FileController extends Controller
             return response()->json($e->getMessage(), $e->getCode());
         }
     }
+    public function generateSparepartSelling($year,$month)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        try {
+            $report = DB::select("SELECT motorcycle_brands.motorcycle_brand_name, motorcycle_types.motorcycle_type_name, services.service_name, sum(detail_services.detail_service_amount)as jumlah_jasa
+            FROM detail_services
+            LEFT JOIN motorcycles on detail_services.id_motorcycle = motorcycles.id_motorcycle
+            JOIN motorcycle_types ON motorcycles.id_motorcycle_type = motorcycle_types.id_motorcycle_type
+            JOIN motorcycle_brands ON motorcycle_types.id_motorcycle_brand = motorcycle_brands.id_motorcycle_brand
+            LEFT JOIN services ON detail_services.id_service = services.id_service
+            LEFT JOIN transactions ON detail_services.id_transaction = transactions.id_transaction
+            WHERE YEAR(transactions.transaction_date) = $year
+            AND Month(transactions.transaction_date) = $month
+            AND transactions.transaction_paid = 'paid'
+            GROUP BY detail_services.id_service, motorcycles.id_motorcycle
+            ORDER BY motorcycles.id_motorcycle");
+            $date = Carbon::now();
+            $no = 1;
+            $monthName = date("F", mktime(0, 0, 0, $month, 1));
+            $pdf = PDF::loadView('pdf.sparepartSelling', compact('report', 'no', 'date', 'year','monthName'))->setPaper('a4', 'portrait');
+         
+    
+            return $pdf->download('SPAREPARTSELLING_' . $date . '.pdf'  );
+        } catch (\Exception $e) {
+            return response()->json($e->getMessage(), $e->getCode());
+        }
+    }
     public function generateServiceSelling($year,$month)
     {
         date_default_timezone_set('Asia/Jakarta');

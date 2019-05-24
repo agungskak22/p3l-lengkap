@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper :breadcrumbs="breadcrumbs">
+  <PageWrapper>
     <div
         id="e3"
         style="max-width: 100%; margin: auto;"
@@ -101,6 +101,8 @@ export default {
         { title: 'Sisa stok', name: 'remainingStock' },
         { title: 'Transaksi percabang', name: 'transactionByBranch' },
         { title: 'Pengeluaran Pertahun', name: 'expenseperYear' },
+        { title: 'Penjualan Sparepart', name: 'serviceShow' }
+
       ],
       name: '',
       date: null,   

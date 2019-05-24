@@ -27,6 +27,7 @@
           <img :src="defaultImg" height="150" v-else/>
           <v-text-field label="Pilih Gambar" class="pa-1" @click='pickFile' v-model='imageName' @input="$v.form.image.$touch()"/>
           <input
+          id="gambar"
             type="file"
             style="display: none"
             ref="image"
@@ -40,6 +41,7 @@
           <VTextField
             label="Id Sparepart"
             class="pa-1"
+            id="idsp"
             v-model="form.id_sparepart"
             :error-messages="idErrors"
             @input="$v.form.id_sparepart.$touch()"
@@ -50,6 +52,7 @@
       <VLayout>
         <VFlex>
           <VTextField
+          id="nama"
             label="Nama"
             class="pa-1"
             v-model="form.sparepart_name"
@@ -62,6 +65,7 @@
       <VLayout>
         <VFlex>
           <VTextField
+          id="merk"
             label="Merk"
             class="pa-1"
             v-model="form.merk"
@@ -74,6 +78,7 @@
       <VLayout>
         <VFlex>
           <v-select
+          id="type"
             label="Sparepart type"
             class="pa-1"
             v-model="form.id_sparepart_type"
@@ -90,6 +95,7 @@
       <VLayout>
         <VFlex>
           <VTextField
+          id="stock"
             label="Stock"
             class="pa-1"
             v-model="form.stock"
@@ -102,6 +108,7 @@
       <VLayout>
         <VFlex>
           <VTextField
+          id="minstock"
             label="Min Stock"
             class="pa-1"
             v-model="form.min_stock"
@@ -114,6 +121,7 @@
       <VLayout>
         <VFlex>
           <VTextField
+          id="beli"
             label="Harga Beli"
             class="pa-1"
             v-model="form.purchase_price"
@@ -126,6 +134,7 @@
       <VLayout>
         <VFlex>
           <VTextField
+          id="jual"
             label="Harga Jual"
             class="pa-1"
             v-model="form.sell_price"
@@ -138,6 +147,7 @@
       <VLayout>
         <VFlex sm6>
           <v-select
+          id="posisi"
             label="Posisi"
             class="pa-1"
             v-model="form.position"
@@ -152,6 +162,7 @@
         </VFlex>
         <VFlex sm6>
           <v-select
+          id="tempat"
             label="Tempat"
             class="pa-1"
             v-model="form.place"
@@ -166,6 +177,7 @@
         </VFlex>
         <VFlex sm6>
             <VTextField
+            id="urut"
             label="Nomor Urut"
             class="pa-1"
             v-model="form.number"
@@ -259,6 +271,7 @@
           class="text-xs-center"
         >
           <VBtn
+          id="save"
             depressed
             color="success"
             @click="submitHandler"

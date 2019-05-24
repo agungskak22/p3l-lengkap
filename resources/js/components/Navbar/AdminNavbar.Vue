@@ -132,18 +132,17 @@
           case 'Administrator': 
             return [
               { id: 1, to: 'dashboard', icon: 'dashboard', text: 'Dashboard', name: 'Dashboard'},
-              { id: 2, to: 'branches', icon: 'location_city', text: 'Cabang', name: 'Branches'},
-              { id: 3, to: 'employees', icon: 'person', text: 'Karyawan', name: 'Employees'},
+              { id: 2, to: 'branches', icon: 'share', text: 'Branch', name: 'Branches'},
+              { id: 3, to: 'employees', icon: 'person', text: 'Employee', name: 'Employees'},
               { id: 4, to: 'users', icon: 'person_outline', text: 'User', name: 'Users'},
+              { id: 13, to: 'motorcycleBrands', icon: 'motorcycle', text: 'Motorcycle', name: 'MotorcycleBrand'},
               { id: 5, to: 'suppliers', icon: 'store_mall_directory', text: 'Supplier', name: 'Suppliers'},
               { id: 6, to: 'sales', icon: 'people', text: 'Sales', name: 'Sales'},
-              { id: 7, to: 'services', icon: 'pan_tool', text: 'Service', name: 'Service'},
-              { id: 8, to: 'spareparts', icon: 'build', text: 'Sparepart', name: 'Sparepart'},
-              { id: 9, to: 'customers', icon: 'accessibility', text: 'Pelanggan', name: 'Customer'},
-              { id: 10, to: 'procurements', icon: 'airport_shuttle', text: 'Pengadaan Sparepart', name: 'procurement'},
-              { id: 11, to: 'transactions', icon: 'euro_symbol', text: 'Transaksi', name: 'transaction'},
-              { id: 12, to: 'mainReport', icon: 'bar_chart', text: 'Laporan', name: 'mainReport'},
-              { id: 13, to: 'motorcycleBrands', icon: 'motorcycle', text: 'Data Motor', name: 'MotorcycleBrand'},
+              { id: 7, to: 'services', icon: 'trending_up', text: 'Services', name: 'Service'},
+              { id: 8, to: 'spareparts', icon: 'build', text: 'Spareparts', name: 'Sparepart'},
+              { id: 9, to: 'customers', icon: 'face', text: 'Customers', name: 'Customer'},
+              { id: 11, to: 'transactions', icon: 'add_shopping_cart', text: 'Transactions', name: 'transaction'},
+              { id: 10, to: 'procurements', icon: 'compare_arrows', text: 'Sparepart procurement', name: 'procurement'},
 
             ]
             break

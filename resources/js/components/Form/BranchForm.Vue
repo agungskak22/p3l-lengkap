@@ -183,7 +183,10 @@ export default {
   methods: {
     submitHandler () {
       this.$emit('submitted', this.form)
-    }
+    },
+    reset () {
+          this.$refs.form.reset()
+    },
   }
 }
 </script>

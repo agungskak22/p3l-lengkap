@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper :breadcrumbs="breadcrumbs">
+  <PageWrapper>
     <card>
       <v-container grid-list-md mb-0>
         <h1 class="text-md-center">PENJUALAN PERBULAN</h1>

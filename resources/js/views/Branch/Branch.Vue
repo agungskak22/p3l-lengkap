@@ -1,153 +1,156 @@
 <template>
   <PageWrapper :breadcrumbs="breadcrumbs">
-    <card>
-      <v-container grid-list-md mb-0>
-        <h1 class="text-md-center">DATA CABANG</h1>
-      </v-container> 
-      <v-layout row wrap>
-        <v-flex xs6 class="text-xs-left">
-            <VBtn
-            depressed
-            dark
-            round
-            color = "indigo"
-            @click="dialog = true"
-            >
-            <VIcon>add</VIcon>
-                Tambah Cabang
-            </VBtn>
-        </v-flex>
-        <v-flex xs6 class="text-xs-right">
-            <VBtn
-            icon
-            @click="fetch()"
-            >
-                <VIcon>refresh</VIcon>
-            </VBtn>
-            <CardSearchBar v-model="keyword" />
-        </v-flex>
-       </v-layout>
-      <BranchControl ref="branchControl">
-        <template slot-scope="{ loading, error, items }">
-          <VCardText
-            v-if="loading || error"
-            class="text-xs-center"
-          >
-            <VAlert
-              v-if="error"
-              type="error"
-              dismissible
-              :value="true"
-            >
-              {{ error.message }}
-            </VAlert>
-            <VProgressCircular
-              :size="45"
-              indeterminate
-              class="loading-section"
-            />
-          </VCardText>
-          <VDataTable
-            :headers="headers"
-            :items="items"
-            :search="keyword"
-            v-if="!loading && !error"
-          >
-            <template slot="items" slot-scope="props">
-              <td v-html="props.item.id_branch" />
-              <td v-html="props.item.branch_name" />
-              <td v-html="props.item.branch_address" />
-              <td v-html="props.item.branch_phone_number" />
-              <td class="text-xs-center">
-                <VBtn 
-                  flat
-                  icon
-                  color="indigo"
-                  dark
-                  @click="editHandler(props.item.id_branch)"
+    <div id="pageTable">
+      <v-container grid-list-xl fluid>
+        <v-layout row wrap>
+        <v-flex lg12>
+          <v-card>
+            <v-toolbar card color="white">
+              <v-text-field flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="keyword"
+              hide-details
+              class="hidden-sm-and-down">
+              </v-text-field>
+              <v-btn icon @click="dialog = true">
+                <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn icon @click="fetch()">
+                <v-icon>refresh</v-icon>
+              </v-btn>
+            </v-toolbar>
+            <v-divider></v-divider>
+            <v-card-text class="pa-0">
+              <BranchControl ref="branchControl">
+              <template slot-scope="{ loading, error, items }">
+                <VCardText
+                  v-if="loading || error"
+                  class="text-xs-left"
                 >
-                  <v-icon>edit</v-icon>
-                </VBtn>
-                <VBtn 
-                  flat
-                  icon
-                  color="error"
-                  dark
-                  @click="deleteWarning(props.item.id_branch)"
+                  <VAlert
+                    v-if="error"
+                    type="error"
+                    dismissible
+                    :value="true"
+                  >
+                    {{ error.message }}
+                  </VAlert>
+                  <VProgressCircular
+                    :size="45"
+                    indeterminate
+                    class="loading-section"
+                  />
+                </VCardText>
+                <VDataTable
+                  :headers="headers"
+                  :items="items"
+                  :search="keyword"
+                  v-if="!loading && !error"
+                  :rows-per-page-items="[10,25,50,{text:'All','value':-1}]"
+                  class="elevation-1"
                 >
-                  <v-icon>delete</v-icon>
-                </VBtn>
-              </td>
-            </template>
-          </VDataTable>
-        </template>
-      </BranchControl>
-      <v-dialog v-model="dialog" max-width="600px">
-        <UtilityCard title="Tambah Cabang">
-            <VCardText>
-                <VAlert
-                v-if="branchError"
-                v-html="branchError.message"
-                :value="true"
-                dismissible
-                type="error"
-                />
-                <BranchForm 
-                v-model="isFormValid"
-                @submitted="submitHandler"
-                />
-            </VCardText>
-        </UtilityCard>
-      </v-dialog>
-      <v-dialog v-model="dialog2" max-width="600px">
-        <UtilityCard title="Ubah Data Cabang">
-            <VCardText>
-                <VAlert
-                v-if="branchError"
-                v-html="branchError.message"
-                :value="true"
-                dismissible
-                type="error"
-                />
-                <BranchForm 
-                v-model="isFormValid"
-                @submitted="submitHandler2"  
-                />
-            </VCardText>
-        </UtilityCard>
-      </v-dialog>
-      <v-dialog v-model="warning" persistent max-width="500">
-        <v-card>
-            <v-card-title class="headline">Warning!</v-card-title>
-            <VCardText
-              v-if="branchLoading || branchError"
-              class="text-xs-center"
-            >
-              <VAlert
-                v-if="branchError"
-                :value="true"
-                dismissible
-                type="error"
-              >
-              {{ branchError.message }}
-              </VAlert>
-              <VProgressCircular
-                v-if="branchLoading"
-                :size="45"
-                indeterminate
-                class="loading-section"
-              />
-            </VCardText>
-            <v-card-text v-else class="text-md-center" style="font-size:15px">Anda yakin ingin menghapus data ini?</v-card-text>
-            <v-card-actions>
-            <v-spacer/>
-            <VBtn class="mb-4" depressed dark color="red accent-3" @click="warning = false">Disagree</VBtn>
-            <VBtn class="mb-4" depressed dark color="indigo" @click="deleteHandler()">Agree</VBtn>
-            <v-spacer/>
-            </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </card>
+                  <template slot="items" slot-scope="props">
+                    <td v-html="props.item.id_branch" />
+                    <td v-html="props.item.branch_name" />
+                    <td v-html="props.item.branch_address" />
+                    <td v-html="props.item.branch_phone_number" />
+                    <td>
+                      <VBtn 
+                        flat
+                        icon
+                        color="indigo"
+                        dark
+                        @click="editHandler(props.item.id_branch)"
+                      >
+                        <v-icon>edit</v-icon>
+                      </VBtn>
+                      <VBtn 
+                        flat
+                        icon
+                        color="error"
+                        dark
+                        @click="deleteWarning(props.item.id_branch)"
+                      >
+                        <v-icon>delete</v-icon>
+                      </VBtn>
+                    </td>
+                  </template>
+                </VDataTable>
+              </template>
+            </BranchControl>
+            <v-dialog v-model="dialog" max-width="600px">
+              <UtilityCard title="Tambah Cabang">
+                  <VCardText>
+                      <VAlert
+                      v-if="branchError"
+                      v-html="branchError.message"
+                      :value="true"
+                      dismissible
+                      type="error"
+                      />
+                      <BranchForm 
+                      v-model="isFormValid"
+                      @submitted="submitHandler"
+                      />
+                  </VCardText>
+              </UtilityCard>
+            </v-dialog>
+            <v-dialog v-model="dialog2" max-width="600px">
+              <UtilityCard title="Ubah Data Cabang">
+                  <VCardText>
+                      <VAlert
+                      v-if="branchError"
+                      v-html="branchError.message"
+                      :value="true"
+                      dismissible
+                      type="error"
+                      />
+                      <BranchForm 
+                      v-model="isFormValid"
+                      @submitted="submitHandler2"  
+                      />
+                  </VCardText>
+              </UtilityCard>
+            </v-dialog>
+            <v-dialog v-model="warning" persistent max-width="500">
+              <v-card>
+                  <v-card-title class="headline">Warning!</v-card-title>
+                  <VCardText
+                    v-if="branchLoading || branchError"
+                    class="text-xs-center"
+                  >
+                    <VAlert
+                      v-if="branchError"
+                      :value="true"
+                      dismissible
+                      type="error"
+                    >
+                    {{ branchError.message }}
+                    </VAlert>
+                    <VProgressCircular
+                      v-if="branchLoading"
+                      :size="45"
+                      indeterminate
+                      class="loading-section"
+                    />
+                  </VCardText>
+                  <v-card-text v-else class="text-md-center" style="font-size:15px">Anda yakin ingin menghapus data ini?</v-card-text>
+                  <v-card-actions>
+                  <v-spacer/>
+                  <VBtn class="mb-4" depressed dark color="red accent-3" @click="warning = false">Disagree</VBtn>
+                  <VBtn class="mb-4" depressed dark color="indigo" @click="deleteHandler()">Agree</VBtn>
+                  <v-spacer/>
+                  </v-card-actions>
+              </v-card>
+            </v-dialog>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+        </v-layout>
+      </v-container>
+    </div>
   </PageWrapper>
 </template>
 
@@ -223,7 +226,9 @@ export default {
       updateBranch: 'Branch/update',
       fetchBranch: 'Branch/edit',
     }),
-
+    reset () {
+          this.$refs.form.reset()
+      },
     fetch () {
       this.$refs.branchControl.fetch()
     },
@@ -281,6 +286,7 @@ export default {
 
   mounted () {
     this.resetForm()
+    
   }
 }
 </script>

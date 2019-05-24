@@ -38,6 +38,7 @@ import RemainingStock from '../views/Report/RemainingStock'
 import MainReport from '../views/Report/MainReport'
 import TransactionbyBranch from '../views/Report/TransactionbyBranch'
 import ExpenseperYear from '../views/Report/ExpenseperYear'
+import serviceShow from '../views/Report/serviceShow'
 
 export const routes = [
     {
@@ -203,7 +204,7 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/transaction-per-year',
+      path: '/admin/Report/Transaksi-pertahun',
       name: 'transactionperYear',
       component: TransactionperYear,
       meta: { role: ['Administrator'] },
@@ -212,7 +213,7 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/best-seller-sparepart',
+      path: '/admin/Report/Penjualan-terlaris',
       name: 'sparepartBestSeller',
       component: BestSellerSparepart,
       meta: { role: ['Administrator'] },
@@ -221,7 +222,7 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/service-selling',
+      path: '/admin/Report/Penjualan-service',
       name: 'serviceSelling',
       component: ServiceSelling,
       meta: { role: ['Administrator'] },
@@ -230,7 +231,16 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/remaining-stock',
+      path: '/admin/Report/penjualan-sparepart',
+      name: 'serviceShow',
+      component: serviceShow,
+      meta: { role: ['Administrator'] },
+      beforeEnter: middleware([
+        auth
+      ])
+    },
+    {
+      path: '/admin/Report/stock-kurang',
       name: 'remainingStock',
       component: RemainingStock,
       meta: { role: ['Administrator'] },
@@ -239,7 +249,7 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/laporan-utama',
+      path: '/admin/Report/laporan-utama',
       name: 'mainReport',
       component: MainReport,
       meta: { role: ['Administrator'] },
@@ -248,7 +258,7 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/transaction-by-branch',
+      path: '/admin/Report/Transaksi-percabang',
       name: 'transactionByBranch',
       component: TransactionbyBranch,
       meta: { role: ['Administrator'] },
@@ -257,7 +267,7 @@ export const routes = [
       ])
     },
     {
-      path: '/admin/expense-per-year',
+      path: '/admin/Report/Pengeluaran-pertahun',
       name: 'expenseperYear',
       component: ExpenseperYear,
       meta: { role: ['Administrator'] },

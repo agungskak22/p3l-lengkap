@@ -1,31 +1,25 @@
 <template>
   <PageWrapper :breadcrumbs="breadcrumbs">
     <card>
-      <v-container grid-list-md mb-0>
-        <h1 class="text-md-center">DATA SPAREPART</h1>
-      </v-container> 
       <v-layout row wrap>
-        <v-flex xs6>
-            <VBtn
-            depressed
-            dark
-            round
-            color = "indigo"
-            @click="dialog = true"
-            >
-            <VIcon>add</VIcon>
-                Tambah Sparepart
-            </VBtn>
-        </v-flex>
-        <v-flex xs6 class="text-xs-right">
-            <VBtn
-            icon
-            @click="fetch()"
-            >
-                <VIcon>refresh</VIcon>
-            </VBtn>
-            <CardSearchBar v-model="keyword" />
-        </v-flex>
+        <v-flex xs12>
+        <v-toolbar card color="white">
+              <v-text-field flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="keyword"
+              hide-details
+              class="hidden-sm-and-down">
+              </v-text-field>
+              <v-btn icon @click="dialog = true">
+                <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn icon @click="fetch()">
+                <v-icon>refresh</v-icon>
+              </v-btn>
+            </v-toolbar>
+            </v-flex>
        </v-layout>
       <SparepartControl ref="sparepartControl">
         <template slot-scope="{ loading, error, items }">
@@ -74,6 +68,7 @@
                   <v-icon>edit</v-icon>
                 </VBtn>
                 <VBtn 
+                id="hapussp"
                   flat
                   icon
                   color="error"
@@ -147,7 +142,7 @@
             <v-card-actions>
             <v-spacer/>
             <VBtn class="mb-4" depressed dark color="red accent-3" @click="warning = false">Disagree</VBtn>
-            <VBtn class="mb-4" depressed dark color="indigo" @click="deleteHandler()">Agree</VBtn>
+            <VBtn class="mb-4" id="konfirmasi" depressed dark color="indigo" @click="deleteHandler()">Agree</VBtn>
             <v-spacer/>
             </v-card-actions>
         </v-card>

@@ -13,6 +13,7 @@
     <VTextField 
       solo
       small
+      id="pencarian"
       v-model="keyword"
       hide-details
       :placeholder="placeholder"

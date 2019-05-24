@@ -1,32 +1,29 @@
 <template>
   <PageWrapper :breadcrumbs="breadcrumbs">
     <card>
-      <v-container grid-list-md mb-0>
-        <h1 class="text-md-center">DATA TRANSAKSI</h1>
-      </v-container> 
       <v-layout row wrap>
-        <v-flex xs6>
-            <VBtn
-            v-if="role!='Cashier'"
-            depressed
-            dark
-            round
-            color = "indigo"
-            :to="{ name: 'transactions.create' }"
-            >
-            <VIcon>add</VIcon>
-                Buat Transaksi Baru
-            </VBtn>
-        </v-flex>
-        <v-flex xs6 class="text-xs-right">
-            <VBtn
-            icon
-            @click="fetch()"
-            >
-                <VIcon>refresh</VIcon>
-            </VBtn>
-            <CardSearchBar v-model="keyword" />
-        </v-flex>
+        <v-flex xs12>
+        <v-toolbar card color="white">
+              <v-text-field flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="keyword"
+              hide-details
+              class="hidden-sm-and-down">
+              </v-text-field>
+              <VBtn
+              icon
+              v-if="role!='Cashier'"
+              :to="{ name: 'transactions.create' }"
+              >
+              <VIcon>add</VIcon>
+              </VBtn>
+              <v-btn icon @click="fetch()">
+                <v-icon>refresh</v-icon>
+              </v-btn>
+            </v-toolbar>
+            </v-flex>
        </v-layout>
       <TransactionControl ref="transactionControl">
         <template slot-scope="{ loading, error, items }">
@@ -591,6 +588,9 @@ export default {
     fetch () {
       this.$refs.transactionControl.fetch()
     },
+    reset () {
+          this.$refs.form.reset()
+      },
     detailHandler(transaction){
       this.payment.id_transaction=transaction.id_transaction
       this.mechanics=[]
@@ -649,12 +649,7 @@ export default {
       this.payment.total=this.totalService+this.totalSparepart
       this.dialog=true
     },
-    // async editHandler(id){
-    //   console.log(id)
-    //   this.id_transaction=id
-    //   await this.fetchTransaction(id)
-    //   this.dialog2=true
-    // },
+
     printSPK(id){
       window.open(`/api/generate-work-order-docs/${id}`, '_blank')
     },

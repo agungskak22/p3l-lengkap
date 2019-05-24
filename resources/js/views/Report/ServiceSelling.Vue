@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper :breadcrumbs="breadcrumbs">
+  <PageWrapper>
     <div
         id="e3"
         style="max-width: 100%; margin: auto;"
@@ -145,6 +145,7 @@ export default {
         { title: 'Sisa stok', name: 'remainingStock' },
         { title: 'Transaksi percabang', name: 'transactionByBranch' },
         { title: 'Pengeluaran Pertahun', name: 'expenseperYear' },
+        { title: 'Penjualan Sparepart', name: 'serviceShow' }
       ],
       name: '',
       date: new Date().toISOString().substr(0, 7),
@@ -229,12 +230,6 @@ export default {
             month: word[1],
       }
       await this.fetchReport(payload);
-
-    //   this.reports.forEach(report => {
-    //       this.series[0].data.push(report.Sparepart)
-    //       this.series[1].data.push(report.Service)
-    //       this.series[2].data.push(report.Total)
-    //   });
     },
 
     async fetchData(){

@@ -127,6 +127,22 @@ class ReportController extends Controller
         ORDER BY motorcycles.id_motorcycle");
         return response()->json($report, 200, [], JSON_NUMERIC_CHECK);
     }
+    public function SparepartSelling($year,$month)
+    {
+        $report = DB::select("SELECT motorcycle_brands.motorcycle_brand_name, motorcycle_types.motorcycle_type_name, services.service_name, sum(detail_services.detail_service_amount)as jumlah_jasa
+        FROM detail_services
+        LEFT JOIN motorcycles on detail_services.id_motorcycle = motorcycles.id_motorcycle
+        JOIN motorcycle_types ON motorcycles.id_motorcycle_type = motorcycle_types.id_motorcycle_type
+        JOIN motorcycle_brands ON motorcycle_types.id_motorcycle_brand = motorcycle_brands.id_motorcycle_brand
+        LEFT JOIN services ON detail_services.id_service = services.id_service
+        LEFT JOIN transactions ON detail_services.id_transaction = transactions.id_transaction
+        WHERE YEAR(transactions.transaction_date) = $year
+        AND Month(transactions.transaction_date) = $month
+        AND transactions.transaction_paid = 'paid'
+        GROUP BY detail_services.id_service, motorcycles.id_motorcycle
+        ORDER BY motorcycles.id_motorcycle");
+        return response()->json($report, 200, [], JSON_NUMERIC_CHECK);
+    }
     public function RemainingStock($year,$sparepart)
     {
         $report = DB::select("SELECT MONTHNAME(STR_TO_DATE((m.bulan), '%m')) as 'Bulan', COALESCE((select (

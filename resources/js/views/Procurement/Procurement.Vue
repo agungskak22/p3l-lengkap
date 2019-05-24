@@ -1,31 +1,25 @@
 <template>
   <PageWrapper :breadcrumbs="breadcrumbs">
     <card>
-      <v-container grid-list-md mb-0>
-        <h1 class="text-md-center">DATA PENGADAAN SPAREPART</h1>
-      </v-container> 
       <v-layout row wrap>
-        <v-flex xs6>
-            <VBtn
-            depressed
-            dark
-            round
-            color = "indigo"
-            @click="dialog = true"
-            >
-            <VIcon>add</VIcon>
-                Pesan Sparepart
-            </VBtn>
-        </v-flex>
-        <v-flex xs6 class="text-xs-right">
-            <VBtn
-            icon
-            @click="fetch()"
-            >
-                <VIcon>refresh</VIcon>
-            </VBtn>
-            <CardSearchBar v-model="keyword" />
-        </v-flex>
+           <v-flex xs12>
+        <v-toolbar card color="white">
+              <v-text-field flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="keyword"
+              hide-details
+              class="hidden-sm-and-down">
+              </v-text-field>
+              <v-btn icon @click="dialog = true">
+                <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn icon @click="fetch()">
+                <v-icon>refresh</v-icon>
+              </v-btn>
+            </v-toolbar>
+            </v-flex>
       </v-layout>
       <ProcurementControl ref="procurementControl">
         <template slot-scope="{ loading, error, items }">

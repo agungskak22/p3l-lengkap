@@ -75,7 +75,14 @@ const actions = {
       context.commit('setFailedAction', err)
     }
   },
-
+  async spareparteSelling(context, payload) {
+    try {
+      const res = await reportService.serviceSelling(payload.year,payload.month)
+      context.commit('setReportForm', res)
+    } catch (err) {
+      context.commit('setFailedAction', err)
+    }
+  },
   async remainingStock(context, payload) {
     try {
       console.log(payload.sparepart)
@@ -121,6 +128,13 @@ const actions = {
   async printServiceSelling(context, payload) {
     try {
       await reportService.printserviceSelling(payload.year,payload.month)
+    } catch (err) {
+      context.commit('setFailedAction', err)
+    }
+  },
+  async printsparepartSelling(context, payload) {
+    try {
+      await reportService.printsparepartSelling(payload.year,payload.month)
     } catch (err) {
       context.commit('setFailedAction', err)
     }

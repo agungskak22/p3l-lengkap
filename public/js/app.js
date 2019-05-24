@@ -1899,6 +1899,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: {
@@ -13511,6 +13512,7 @@ var render = function() {
         attrs: {
           solo: "",
           small: "",
+          id: "pencarian",
           "hide-details": "",
           placeholder: _vm.placeholder
         },
@@ -60382,10 +60384,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     return serviceSelling;
   }(),
-  remainingStock: function () {
-    var _remainingStock = _asyncToGenerator(
+  sparepartSelling: function () {
+    var _sparepartSelling = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(year, sparepart) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(year, month) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
         while (1) {
@@ -60393,7 +60395,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context5.prev = 0;
               _context5.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/remaining-stock/".concat(year, "/").concat(sparepart));
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/sparepart-selling/".concat(year, "/").concat(month));
 
             case 3:
               res = _context5.sent;
@@ -60412,16 +60414,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee5, this, [[0, 7]]);
     }));
 
-    function remainingStock(_x5, _x6) {
-      return _remainingStock.apply(this, arguments);
+    function sparepartSelling(_x5, _x6) {
+      return _sparepartSelling.apply(this, arguments);
     }
 
-    return remainingStock;
+    return sparepartSelling;
   }(),
-  bestSellerSparepart: function () {
-    var _bestSellerSparepart = _asyncToGenerator(
+  remainingStock: function () {
+    var _remainingStock = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(year, sparepart) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
         while (1) {
@@ -60429,7 +60431,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context6.prev = 0;
               _context6.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/best-seller-sparepart");
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/remaining-stock/".concat(year, "/").concat(sparepart));
 
             case 3:
               res = _context6.sent;
@@ -60448,6 +60450,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee6, this, [[0, 7]]);
     }));
 
+    function remainingStock(_x7, _x8) {
+      return _remainingStock.apply(this, arguments);
+    }
+
+    return remainingStock;
+  }(),
+  bestSellerSparepart: function () {
+    var _bestSellerSparepart = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.prev = 0;
+              _context7.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/best-seller-sparepart");
+
+            case 3:
+              res = _context7.sent;
+              return _context7.abrupt("return", res.data);
+
+            case 7:
+              _context7.prev = 7;
+              _context7.t0 = _context7["catch"](0);
+              throw new Error('Gagal mendapatkan data reports!');
+
+            case 10:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7, this, [[0, 7]]);
+    }));
+
     function bestSellerSparepart() {
       return _bestSellerSparepart.apply(this, arguments);
     }
@@ -60457,41 +60495,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   printTransactionperMonth: function () {
     var _printTransactionperMonth = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(year) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
-        while (1) {
-          switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.prev = 0;
-              _context7.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-transaction-per-month/".concat(year));
-
-            case 3:
-              _context7.next = 8;
-              break;
-
-            case 5:
-              _context7.prev = 5;
-              _context7.t0 = _context7["catch"](0);
-              throw new Error('Gagal mendapatkan data reports!');
-
-            case 8:
-            case "end":
-              return _context7.stop();
-          }
-        }
-      }, _callee7, this, [[0, 5]]);
-    }));
-
-    function printTransactionperMonth(_x7) {
-      return _printTransactionperMonth.apply(this, arguments);
-    }
-
-    return printTransactionperMonth;
-  }(),
-  printExpenseperYear: function () {
-    var _printExpenseperYear = _asyncToGenerator(
-    /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(year) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
         while (1) {
@@ -60499,7 +60502,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context8.prev = 0;
               _context8.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-expense/".concat(year));
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-transaction-per-month/".concat(year));
 
             case 3:
               _context8.next = 8;
@@ -60518,23 +60521,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee8, this, [[0, 5]]);
     }));
 
-    function printExpenseperYear(_x8) {
-      return _printExpenseperYear.apply(this, arguments);
+    function printTransactionperMonth(_x9) {
+      return _printTransactionperMonth.apply(this, arguments);
     }
 
-    return printExpenseperYear;
+    return printTransactionperMonth;
   }(),
-  printserviceSelling: function () {
-    var _printserviceSelling = _asyncToGenerator(
+  printExpenseperYear: function () {
+    var _printExpenseperYear = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(year, month) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(year) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
               _context9.prev = 0;
               _context9.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-service-selling/".concat(year, "/").concat(month));
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-expense/".concat(year));
 
             case 3:
               _context9.next = 8;
@@ -60553,23 +60556,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee9, this, [[0, 5]]);
     }));
 
-    function printserviceSelling(_x9, _x10) {
-      return _printserviceSelling.apply(this, arguments);
+    function printExpenseperYear(_x10) {
+      return _printExpenseperYear.apply(this, arguments);
     }
 
-    return printserviceSelling;
+    return printExpenseperYear;
   }(),
-  printRemainingStock: function () {
-    var _printRemainingStock = _asyncToGenerator(
+  printserviceSelling: function () {
+    var _printserviceSelling = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(year, sparepart) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(year, month) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
               _context10.prev = 0;
               _context10.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-remaining-stock/".concat(year, "/").concat(sparepart));
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-service-selling/".concat(year, "/").concat(month));
 
             case 3:
               _context10.next = 8;
@@ -60588,23 +60591,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee10, this, [[0, 5]]);
     }));
 
-    function printRemainingStock(_x11, _x12) {
-      return _printRemainingStock.apply(this, arguments);
+    function printserviceSelling(_x11, _x12) {
+      return _printserviceSelling.apply(this, arguments);
     }
 
-    return printRemainingStock;
+    return printserviceSelling;
   }(),
-  printbestSellerSparepart: function () {
-    var _printbestSellerSparepart = _asyncToGenerator(
+  printsparepartSelling: function () {
+    var _printsparepartSelling = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(year, month) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
               _context11.prev = 0;
               _context11.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-sparepart-best-seller");
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-sparepart-selling/".concat(year, "/").concat(month));
 
             case 3:
               _context11.next = 8;
@@ -60623,23 +60626,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee11, this, [[0, 5]]);
     }));
 
-    function printbestSellerSparepart() {
-      return _printbestSellerSparepart.apply(this, arguments);
+    function printsparepartSelling(_x13, _x14) {
+      return _printsparepartSelling.apply(this, arguments);
     }
 
-    return printbestSellerSparepart;
+    return printsparepartSelling;
   }(),
-  printTransactionperYear2: function () {
-    var _printTransactionperYear = _asyncToGenerator(
+  printRemainingStock: function () {
+    var _printRemainingStock = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12(year, sparepart) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
               _context12.prev = 0;
               _context12.next = 3;
-              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-transaction-per-year");
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-remaining-stock/".concat(year, "/").concat(sparepart));
 
             case 3:
               _context12.next = 8;
@@ -60656,6 +60659,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }
       }, _callee12, this, [[0, 5]]);
+    }));
+
+    function printRemainingStock(_x15, _x16) {
+      return _printRemainingStock.apply(this, arguments);
+    }
+
+    return printRemainingStock;
+  }(),
+  printbestSellerSparepart: function () {
+    var _printbestSellerSparepart = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.prev = 0;
+              _context13.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-sparepart-best-seller");
+
+            case 3:
+              _context13.next = 8;
+              break;
+
+            case 5:
+              _context13.prev = 5;
+              _context13.t0 = _context13["catch"](0);
+              throw new Error('Gagal mendapatkan data reports!');
+
+            case 8:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13, this, [[0, 5]]);
+    }));
+
+    function printbestSellerSparepart() {
+      return _printbestSellerSparepart.apply(this, arguments);
+    }
+
+    return printbestSellerSparepart;
+  }(),
+  printTransactionperYear2: function () {
+    var _printTransactionperYear = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              _context14.prev = 0;
+              _context14.next = 3;
+              return _Http__WEBPACK_IMPORTED_MODULE_1__["default"].download("/api/generate-transaction-per-year");
+
+            case 3:
+              _context14.next = 8;
+              break;
+
+            case 5:
+              _context14.prev = 5;
+              _context14.t0 = _context14["catch"](0);
+              throw new Error('Gagal mendapatkan data reports!');
+
+            case 8:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14, this, [[0, 5]]);
     }));
 
     function printTransactionperYear2() {
@@ -64711,8 +64784,8 @@ var actions = {
 
     return serviceSelling;
   }(),
-  remainingStock: function () {
-    var _remainingStock = _asyncToGenerator(
+  spareparteSelling: function () {
+    var _spareparteSelling = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(context, payload) {
       var res;
@@ -64721,30 +64794,68 @@ var actions = {
           switch (_context6.prev = _context6.next) {
             case 0:
               _context6.prev = 0;
-              console.log(payload.sparepart);
-              _context6.next = 4;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].remainingStock(payload.year, payload.sparepart);
+              _context6.next = 3;
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].serviceSelling(payload.year, payload.month);
 
-            case 4:
+            case 3:
               res = _context6.sent;
               context.commit('setReportForm', res);
-              _context6.next = 11;
+              _context6.next = 10;
               break;
 
-            case 8:
-              _context6.prev = 8;
+            case 7:
+              _context6.prev = 7;
               _context6.t0 = _context6["catch"](0);
               context.commit('setFailedAction', _context6.t0);
 
-            case 11:
+            case 10:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6, this, [[0, 8]]);
+      }, _callee6, this, [[0, 7]]);
     }));
 
-    function remainingStock(_x9, _x10) {
+    function spareparteSelling(_x9, _x10) {
+      return _spareparteSelling.apply(this, arguments);
+    }
+
+    return spareparteSelling;
+  }(),
+  remainingStock: function () {
+    var _remainingStock = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(context, payload) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.prev = 0;
+              console.log(payload.sparepart);
+              _context7.next = 4;
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].remainingStock(payload.year, payload.sparepart);
+
+            case 4:
+              res = _context7.sent;
+              context.commit('setReportForm', res);
+              _context7.next = 11;
+              break;
+
+            case 8:
+              _context7.prev = 8;
+              _context7.t0 = _context7["catch"](0);
+              context.commit('setFailedAction', _context7.t0);
+
+            case 11:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7, this, [[0, 8]]);
+    }));
+
+    function remainingStock(_x11, _x12) {
       return _remainingStock.apply(this, arguments);
     }
 
@@ -64753,41 +64864,6 @@ var actions = {
   printTransactionperMonth: function () {
     var _printTransactionperMonth = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(context, id) {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
-        while (1) {
-          switch (_context7.prev = _context7.next) {
-            case 0:
-              _context7.prev = 0;
-              _context7.next = 3;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printTransactionperMonth(id);
-
-            case 3:
-              _context7.next = 8;
-              break;
-
-            case 5:
-              _context7.prev = 5;
-              _context7.t0 = _context7["catch"](0);
-              context.commit('setFailedAction', _context7.t0);
-
-            case 8:
-            case "end":
-              return _context7.stop();
-          }
-        }
-      }, _callee7, this, [[0, 5]]);
-    }));
-
-    function printTransactionperMonth(_x11, _x12) {
-      return _printTransactionperMonth.apply(this, arguments);
-    }
-
-    return printTransactionperMonth;
-  }(),
-  printExpenseperYear: function () {
-    var _printExpenseperYear = _asyncToGenerator(
-    /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(context, id) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
         while (1) {
@@ -64795,7 +64871,7 @@ var actions = {
             case 0:
               _context8.prev = 0;
               _context8.next = 3;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printExpenseperYear(id);
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printTransactionperMonth(id);
 
             case 3:
               _context8.next = 8;
@@ -64814,23 +64890,23 @@ var actions = {
       }, _callee8, this, [[0, 5]]);
     }));
 
-    function printExpenseperYear(_x13, _x14) {
-      return _printExpenseperYear.apply(this, arguments);
+    function printTransactionperMonth(_x13, _x14) {
+      return _printTransactionperMonth.apply(this, arguments);
     }
 
-    return printExpenseperYear;
+    return printTransactionperMonth;
   }(),
-  printTransactionbyBranch: function () {
-    var _printTransactionbyBranch = _asyncToGenerator(
+  printExpenseperYear: function () {
+    var _printExpenseperYear = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(context) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(context, id) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
               _context9.prev = 0;
               _context9.next = 3;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printTransactionperYear2();
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printExpenseperYear(id);
 
             case 3:
               _context9.next = 8;
@@ -64849,23 +64925,23 @@ var actions = {
       }, _callee9, this, [[0, 5]]);
     }));
 
-    function printTransactionbyBranch(_x15) {
-      return _printTransactionbyBranch.apply(this, arguments);
+    function printExpenseperYear(_x15, _x16) {
+      return _printExpenseperYear.apply(this, arguments);
     }
 
-    return printTransactionbyBranch;
+    return printExpenseperYear;
   }(),
-  printRemainingStock: function () {
-    var _printRemainingStock = _asyncToGenerator(
+  printTransactionbyBranch: function () {
+    var _printTransactionbyBranch = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(context, payload) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(context) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
               _context10.prev = 0;
               _context10.next = 3;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printRemainingStock(payload.year, payload.sparepart);
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printTransactionperYear2();
 
             case 3:
               _context10.next = 8;
@@ -64884,14 +64960,14 @@ var actions = {
       }, _callee10, this, [[0, 5]]);
     }));
 
-    function printRemainingStock(_x16, _x17) {
-      return _printRemainingStock.apply(this, arguments);
+    function printTransactionbyBranch(_x17) {
+      return _printTransactionbyBranch.apply(this, arguments);
     }
 
-    return printRemainingStock;
+    return printTransactionbyBranch;
   }(),
-  printServiceSelling: function () {
-    var _printServiceSelling = _asyncToGenerator(
+  printRemainingStock: function () {
+    var _printRemainingStock = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11(context, payload) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
@@ -64900,7 +64976,7 @@ var actions = {
             case 0:
               _context11.prev = 0;
               _context11.next = 3;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printserviceSelling(payload.year, payload.month);
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printRemainingStock(payload.year, payload.sparepart);
 
             case 3:
               _context11.next = 8;
@@ -64919,23 +64995,23 @@ var actions = {
       }, _callee11, this, [[0, 5]]);
     }));
 
-    function printServiceSelling(_x18, _x19) {
-      return _printServiceSelling.apply(this, arguments);
+    function printRemainingStock(_x18, _x19) {
+      return _printRemainingStock.apply(this, arguments);
     }
 
-    return printServiceSelling;
+    return printRemainingStock;
   }(),
-  printBestSellerSparepart: function () {
-    var _printBestSellerSparepart = _asyncToGenerator(
+  printServiceSelling: function () {
+    var _printServiceSelling = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12(context) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12(context, payload) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
               _context12.prev = 0;
               _context12.next = 3;
-              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printbestSellerSparepart();
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printserviceSelling(payload.year, payload.month);
 
             case 3:
               _context12.next = 8;
@@ -64954,7 +65030,77 @@ var actions = {
       }, _callee12, this, [[0, 5]]);
     }));
 
-    function printBestSellerSparepart(_x20) {
+    function printServiceSelling(_x20, _x21) {
+      return _printServiceSelling.apply(this, arguments);
+    }
+
+    return printServiceSelling;
+  }(),
+  printsparepartSelling: function () {
+    var _printsparepartSelling = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13(context, payload) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.prev = 0;
+              _context13.next = 3;
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printsparepartSelling(payload.year, payload.month);
+
+            case 3:
+              _context13.next = 8;
+              break;
+
+            case 5:
+              _context13.prev = 5;
+              _context13.t0 = _context13["catch"](0);
+              context.commit('setFailedAction', _context13.t0);
+
+            case 8:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13, this, [[0, 5]]);
+    }));
+
+    function printsparepartSelling(_x22, _x23) {
+      return _printsparepartSelling.apply(this, arguments);
+    }
+
+    return printsparepartSelling;
+  }(),
+  printBestSellerSparepart: function () {
+    var _printBestSellerSparepart = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14(context) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              _context14.prev = 0;
+              _context14.next = 3;
+              return _service_Report__WEBPACK_IMPORTED_MODULE_1__["default"].printbestSellerSparepart();
+
+            case 3:
+              _context14.next = 8;
+              break;
+
+            case 5:
+              _context14.prev = 5;
+              _context14.t0 = _context14["catch"](0);
+              context.commit('setFailedAction', _context14.t0);
+
+            case 8:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14, this, [[0, 5]]);
+    }));
+
+    function printBestSellerSparepart(_x24) {
       return _printBestSellerSparepart.apply(this, arguments);
     }
 
@@ -67642,8 +67788,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\mas agung p3l\mas agung p3l\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\mas agung p3l\mas agung p3l\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\mas agung p3l\siatmaauto\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\mas agung p3l\siatmaauto\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

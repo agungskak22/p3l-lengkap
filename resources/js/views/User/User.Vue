@@ -1,122 +1,135 @@
 <template>
-  <PageWrapper :narrow="true" :breadcrumbs="breadcrumbs">
-    <card>
-      <v-container grid-list-md mb-0>
-        <h1 class="text-md-center">DATA USER</h1>
-      </v-container> 
-      <v-layout row wrap>
-        <v-flex xs12 class="text-xs-right">
-            <VBtn
-            icon
-            @click="fetch()"
-            >
-                <VIcon>refresh</VIcon>
-            </VBtn>
-            <CardSearchBar v-model="keyword" />
+  <PageWrapper :breadcrumbs="breadcrumbs">
+     <div id="pageTable">
+      <v-container grid-list-xl fluid>
+        <v-layout row wrap>
+        <v-flex lg12>
+          <v-card>
+            <v-toolbar card color="white">
+              <v-text-field flat
+              solo
+              prepend-icon="search"
+              placeholder="Type something"
+              v-model="keyword"
+              hide-details
+              class="hidden-sm-and-down">
+              </v-text-field>
+              <v-btn icon @click="dialog = true">
+                <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn icon @click="fetch()">
+                <v-icon>refresh</v-icon>
+              </v-btn>
+            </v-toolbar>
+            <v-divider></v-divider>
+            <v-card-text class="pa-0">
+          <UserControl ref="userControl">
+                  <template slot-scope="{ loading, error, items }">
+                    <VCardText
+                      v-if="loading || error"
+                      class="text-xs-center"
+                    >
+                      <VAlert
+                        v-if="error"
+                        type="error"
+                        dismissible
+                        :value="true"
+                      >
+                        {{ error.message }}
+                      </VAlert>
+                      <VProgressCircular
+                        :size="45"
+                        indeterminate
+                        class="loading-section"
+                      />
+                    </VCardText>
+                    <VDataTable
+                      :headers="headers"
+                      :items="items"
+                      :search="keyword"
+                      v-if="!loading && !error"
+                    >
+                      <template slot="items" slot-scope="props">
+                        <td v-html="props.item.id" />
+                        <td v-html="props.item.username" />
+                        <td class="text-xs-center">
+                          <VBtn 
+                            flat
+                            icon
+                            color="indigo"
+                            dark
+                            @click="editHandler(props.item.id)"
+                          >
+                            <v-icon>edit</v-icon>
+                          </VBtn>
+                          <VBtn 
+                            flat
+                            icon
+                            color="error"
+                            dark
+                            @click="deleteWarning(props.item.id)"
+                          >
+                            <v-icon>delete</v-icon>
+                          </VBtn>
+                        </td>
+                      </template>
+                    </VDataTable>
+                  </template>
+                </UserControl>
+                <v-dialog v-model="dialog2" max-width="600px">
+                  <UtilityCard title="Ubah Data User">
+                      <VCardText>
+                          <VAlert
+                          v-if="userError"
+                          v-html="userError.message"
+                          :value="true"
+                          dismissible
+                          type="error"
+                          />
+                          <UserForm 
+                          v-model="isFormValid"
+                          @submitted="submitHandler2"
+                          />
+                      </VCardText>
+                  </UtilityCard>
+                </v-dialog>
+                <v-dialog v-model="warning" persistent max-width="500">
+                  <v-card>
+                      <v-card-title class="headline">Warning!</v-card-title>
+                      <VCardText
+                        v-if="userLoading || userError"
+                        class="text-xs-center"
+                      >
+                        <VAlert
+                          v-if="userError"
+                          :value="true"
+                          dismissible
+                          type="error"
+                        >
+                        {{ userError.message }}
+                        </VAlert>
+                        <VProgressCircular
+                          v-if="userLoading"
+                          :size="45"
+                          indeterminate
+                          class="loading-section"
+                        />
+                      </VCardText>
+                      <v-card-text v-else class="text-md-center" style="font-size:15px">Anda yakin ingin menghapus data ini?</v-card-text>
+                      <v-card-actions>
+                      <v-spacer/>
+                      <VBtn class="mb-4" depressed dark color="red accent-3" @click="warning = false">Disagree</VBtn>
+                      <VBtn class="mb-4" depressed dark color="indigo" @click="deleteHandler()">Agree</VBtn>
+                      <v-spacer/>
+                      </v-card-actions>
+                  </v-card>
+                </v-dialog>
+            </v-card-text>
+          </v-card>
         </v-flex>
-       </v-layout>
-      <UserControl ref="userControl">
-        <template slot-scope="{ loading, error, items }">
-          <VCardText
-            v-if="loading || error"
-            class="text-xs-center"
-          >
-            <VAlert
-              v-if="error"
-              type="error"
-              dismissible
-              :value="true"
-            >
-              {{ error.message }}
-            </VAlert>
-            <VProgressCircular
-              :size="45"
-              indeterminate
-              class="loading-section"
-            />
-          </VCardText>
-          <VDataTable
-            :headers="headers"
-            :items="items"
-            :search="keyword"
-            v-if="!loading && !error"
-          >
-            <template slot="items" slot-scope="props">
-              <td v-html="props.item.id" />
-              <td v-html="props.item.username" />
-              <td class="text-xs-center">
-                <VBtn 
-                  flat
-                  icon
-                  color="indigo"
-                  dark
-                  @click="editHandler(props.item.id)"
-                >
-                  <v-icon>edit</v-icon>
-                </VBtn>
-                <VBtn 
-                  flat
-                  icon
-                  color="error"
-                  dark
-                  @click="deleteWarning(props.item.id)"
-                >
-                  <v-icon>delete</v-icon>
-                </VBtn>
-              </td>
-            </template>
-          </VDataTable>
-        </template>
-      </UserControl>
-      <v-dialog v-model="dialog2" max-width="600px">
-        <UtilityCard title="Ubah Data User">
-            <VCardText>
-                <VAlert
-                v-if="userError"
-                v-html="userError.message"
-                :value="true"
-                dismissible
-                type="error"
-                />
-                <UserForm 
-                v-model="isFormValid"
-                @submitted="submitHandler2"
-                />
-            </VCardText>
-        </UtilityCard>
-      </v-dialog>
-      <v-dialog v-model="warning" persistent max-width="500">
-        <v-card>
-            <v-card-title class="headline">Warning!</v-card-title>
-            <VCardText
-              v-if="userLoading || userError"
-              class="text-xs-center"
-            >
-              <VAlert
-                v-if="userError"
-                :value="true"
-                dismissible
-                type="error"
-              >
-              {{ userError.message }}
-              </VAlert>
-              <VProgressCircular
-                v-if="userLoading"
-                :size="45"
-                indeterminate
-                class="loading-section"
-              />
-            </VCardText>
-            <v-card-text v-else class="text-md-center" style="font-size:15px">Anda yakin ingin menghapus data ini?</v-card-text>
-            <v-card-actions>
-            <v-spacer/>
-            <VBtn class="mb-4" depressed dark color="red accent-3" @click="warning = false">Disagree</VBtn>
-            <VBtn class="mb-4" depressed dark color="indigo" @click="deleteHandler()">Agree</VBtn>
-            <v-spacer/>
-            </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </card>
+        </v-layout>
+      </v-container>
+    </div>
   </PageWrapper>
 </template>
 

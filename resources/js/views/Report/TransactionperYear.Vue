@@ -193,7 +193,8 @@ export default {
     }),
 
     async print(){
-        await this.printReport(this.year);
+        // await this.printReport(this.year);
+        window.open(`/api/generate-transaction-per-month/${this.year}`, '_blank')
     },
 
     async fetch () {

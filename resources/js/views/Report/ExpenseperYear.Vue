@@ -200,8 +200,8 @@ export default {
       printReport: 'Report/printExpenseperYear'
     }),
     async print(){
-        await this.printReport(this.year);
-        // window.open(`/api/generate-expense/${this.year}`, '_blank')
+        //await this.printReport(this.year);
+        window.open(`/api/generate-expense/${this.year}`, '_blank')
     },
     async fetch () {
       await this.fetchReport(this.year);

@@ -167,17 +167,12 @@ export default {
     }),
 
     async print(){
-        await this.printReport();
+        window.open(`/api/generate-sparepart-best-seller`, '_blank')
     },
 
     async fetch () {
       await this.fetchReport();
 
-    //   this.reports.forEach(report => {
-    //       this.series[0].data.push(report.Sparepart)
-    //       this.series[1].data.push(report.Service)
-    //       this.series[2].data.push(report.Total)
-    //   });
     },
     save (date) {
       this.$refs.menu.save(date);

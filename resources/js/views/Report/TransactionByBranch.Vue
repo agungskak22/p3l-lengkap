@@ -206,7 +206,8 @@ export default {
       printReport: 'Report/printTransactionbyBranch'
     }),
     async print(){
-        await this.printReport();
+        // await this.printReport();
+        window.open(`/api/generate-transaction-per-year`, '_blank')
     },
     async fetch () {
       await this.fetchReport();

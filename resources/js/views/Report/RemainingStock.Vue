@@ -234,7 +234,8 @@ export default {
             year: this.year,
             sparepart: this.sparepart_type,
       }
-        await this.printReport(payload);
+        // await this.printReport(payload);
+        window.open(`/api/generate-remaining-stock/${this.year}/${this.sparepart_type}`, '_blank')
     },
     async fetch () {
       const payload = {

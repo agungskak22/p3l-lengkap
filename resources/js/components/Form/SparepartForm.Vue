@@ -413,7 +413,7 @@ export default {
       if (!this.$v.form.stock.numeric && this.$v.form.stock.$dirty) {
         errors.push('Inputan stock tidak valid')
       }
-
+      !this.$v.form.stock.stockMinimal && errors.push('Inputan stock harus lebih dari minimal stock')
       return errors
     },
 
@@ -461,7 +461,7 @@ export default {
       if (!this.$v.form.sell_price.numeric && this.$v.form.sell_price.$dirty) {
         errors.push('Inputan harga jual tidak valid')
       }
-
+      !this.$v.form.sell_price.priceMinimal && errors.push('Inputan harga jual harus lebih besar dari harga beli')
       return errors
     },
 

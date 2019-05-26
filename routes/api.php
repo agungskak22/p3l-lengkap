@@ -21,6 +21,7 @@ Route::resource('branches','BranchController');
 Route::resource('roles','RoleController');
 Route::resource('users','UserController');
 Route::resource('employees','EmployeeController');
+
 Route::resource('sales','SalesController');
 Route::get('suppliersales/{id}','SalesController@showbySupplier');
 Route::resource('suppliers','SupplierController');
@@ -30,6 +31,7 @@ Route::resource('spareparts','SparepartController');
 Route::post('updatesparepart/{id}','SparepartController@updateSparepart');
 Route::post('updatesparepart','SparepartController@sparepartVerification');
 Route::put('updatesparepartmobile/{id}','SparepartController@sparepartVerificationMobile');
+
 Route::resource('customers','CustomerController');
 Route::resource('motorcycle_brands','Motorcycle_brandController');
 Route::resource('motorcycle_types','Motorcycle_typeController');

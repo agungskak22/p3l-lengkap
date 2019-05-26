@@ -125,9 +125,6 @@
 				</thead>
 				<tbody>
                     
-
-
-       
 					@foreach ($report as $item)
 					<tr>
 						<td style="text-align:center;">{{ $no++ }}</td>
@@ -145,7 +142,7 @@
 
 		<div class="signature-section">
 			<div>
-                dicetak tanggal {{$date}}
+                dicetak tanggal {{ date('d M Y') }}
 			</div>
 		</div>
 	</div>

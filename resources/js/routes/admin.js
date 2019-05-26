@@ -135,7 +135,7 @@ export const routes = [
       path: '/admin/spareparts',
       name: 'spareparts',
       component: Sparepart,
-      meta: { role: ['Administrator'] },
+      meta: { role: ['Administrator', 'Customer Service'] },
       beforeEnter: middleware([
         auth
       ])
@@ -144,7 +144,7 @@ export const routes = [
       path: '/admin/motorcycleBrands',
       name: 'motorcycleBrands',
       component: MotorcycleBrand,
-      meta: { role: ['Administrator'] },
+      meta: { role: ['Administrator','Customer Service'] },
       beforeEnter: middleware([
         auth
       ])
@@ -153,7 +153,7 @@ export const routes = [
       path: '/admin/motorcycleTypes',
       name: 'motorcycleTypes',
       component: MotorcycleType,
-      meta: { role: ['Administrator'] },
+      meta: { role: ['Administrator','Customer Service'] },
       beforeEnter: middleware([
         auth
       ])

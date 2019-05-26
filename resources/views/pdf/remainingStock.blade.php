@@ -139,7 +139,7 @@
                 dicetak tanggal 24 Januari 2019
             </div> -->
             <div>
-                dicetak tanggal {{$date}}
+                dicetak tanggal {{ date('d M Y') }}
 			</div>
 		</div>
 	</div>

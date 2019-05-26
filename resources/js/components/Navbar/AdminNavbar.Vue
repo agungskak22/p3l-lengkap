@@ -149,14 +149,14 @@
 
           case 'Customer Service': 
             return [
-              { id: 1, to: 'dashboard', icon: 'dashboard', text: 'Dashboard', name: 'Dashboard' },
+              { id: 8, to: 'spareparts', icon: 'build', text: 'Spareparts', name: 'Sparepart'},
+              { id: 13, to: 'motorcycleBrands', icon: 'motorcycle', text: 'Motorcycle', name: 'MotorcycleBrand'},
               { id: 2, to: 'transactions', icon: 'euro_symbol', text: 'Transaksi', name: 'transaction'},
             ]
             break
 
           case 'Cashier': 
             return [
-              { id: 1, to: 'dashboard', icon: 'dashboard', text: 'Dashboard', name: 'Dashboard' },
               { id: 2, to: 'transactions', icon: 'euro_symbol', text: 'Transaksi', name: 'transaction'},
             ]
             break

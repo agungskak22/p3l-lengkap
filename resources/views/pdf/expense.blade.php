@@ -105,17 +105,6 @@
 					</tr>
 				</thead>
 				<tbody>
-                    
-                    <!-- <tr>
-                        <td style="text-align:center;">1</td>
-                        <td>Januari</td>
-                        <td>Rp. 100000</td>
-                        <td>Rp. 750000</td>
-                        <td>Rp. 850000</td>
-                    
-                    </tr> -->
-
-                    
                     <?php
                         $temp=0;
                     ?>
@@ -133,9 +122,6 @@
                     <tr>
                         <td></td>
                         <td style="font-weight: bold; font-size: 18px; text-align:right;">Total</td>
-                        <!-- @foreach ($report as $item)
-                             $item->total +
-                        @endforeach -->
                         <td style="font-weight: bold; font-size: 18px; text-align:right;">Rp. {{$temp}}</td>
                     </tr>
 
@@ -144,11 +130,8 @@
 		</div>
 
 		<div class="signature-section">
-			<!-- <div>
-                dicetak tanggal 24 Januari 2019
-            </div> -->
             <div>
-                dicetak tanggal {{$date}}
+                dicetak tanggal {{ date('d M Y') }}
 			</div>
 		</div>
 	</div>

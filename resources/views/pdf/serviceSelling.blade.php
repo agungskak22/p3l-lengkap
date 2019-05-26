@@ -145,7 +145,7 @@
 
 		<div class="signature-section">
 			<div>
-                dicetak tanggal {{$date}}
+                dicetak tanggal {{ date('d M Y') }}
 			</div>
 		</div>
 	</div>

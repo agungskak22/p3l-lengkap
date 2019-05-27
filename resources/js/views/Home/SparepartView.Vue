@@ -35,7 +35,7 @@
         <v-layout justify-center align-center>
           <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
             <swiper-slide  v-for="(slide, index) in swiperSlides" :key="index">
-              <v-img src="http://localhost:8000/asset/ski.png" tile="tile" height="350px" width="580px"/>
+              <v-img src="/asset/ski.png" tile="tile" height="350px" width="580px"/>
             </swiper-slide>
             <v-flex class="swiper-pagination" slot="pagination"></v-flex>
           </swiper>

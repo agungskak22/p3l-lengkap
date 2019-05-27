@@ -584,7 +584,7 @@ export default {
 				})
 			} else {
 				this.imageName = ''
-				this.imageUrl = 'http://localhost:8000/asset/default.png'
+				this.imageUrl = '/asset/default.png'
 			}
 		}
   },

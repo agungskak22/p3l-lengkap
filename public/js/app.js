@@ -14973,7 +14973,7 @@ var render = function() {
                       [
                         _c("v-img", {
                           attrs: {
-                            src: "http://localhost:8000/asset/ski.png",
+                            src: "/asset/ski.png",
                             tile: "tile",
                             height: "350px",
                             width: "580px"
